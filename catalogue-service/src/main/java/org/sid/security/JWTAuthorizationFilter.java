@@ -17,7 +17,6 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		String jwt = request.getHeader("Authorization");
 		if(Objects.isNull(jwt)) throw new RuntimeException("Not authorized");
-		
 		filterChain.doFilter(request, response);
 	}
 
