@@ -18,14 +18,20 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class Category {
 	
 	@Id
 	private String id;
 	private String name;
-	// dans un document category j'enregistre que l'id du produit
 	@DBRef
 	private Collection<Product> products = new ArrayList<Product>();
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + "]";
+	}
+	
+	
+	
+	
 
 }
