@@ -1,8 +1,8 @@
 package org.sid.web;
 
-import org.sid.dto.UserForm;
 import org.sid.entities.AppUser;
 import org.sid.service.AccountService;
+import org.sid.util.dto.UserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;

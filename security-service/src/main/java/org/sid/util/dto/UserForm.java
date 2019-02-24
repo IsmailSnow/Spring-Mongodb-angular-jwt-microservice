@@ -1,4 +1,4 @@
-package org.sid.dto;
+package org.sid.util.dto;
 
 import lombok.Data;
 
