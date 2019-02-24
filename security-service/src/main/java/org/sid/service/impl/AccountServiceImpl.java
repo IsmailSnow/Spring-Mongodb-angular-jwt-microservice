@@ -7,6 +7,7 @@ import org.sid.dao.AppUserRepository;
 import org.sid.entities.AppRole;
 import org.sid.entities.AppUser;
 import org.sid.service.AccountService;
+import org.sid.util.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,7 @@ public class AccountServiceImpl implements AccountService {
         appUser.setActived(true);
         appUser.setPassword(bCryptPasswordEncoder.encode(password));
         appUserRepository.save(appUser);
-        addRoleToUser(username,"USER");
+        addRoleToUser(username,AppConstant.User);
         return appUser;
 	}
 
