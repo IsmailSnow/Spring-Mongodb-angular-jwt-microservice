@@ -1,0 +1,5 @@
+<ul class="list-group" *ngIf="catagories">
+  <li  *ngFor="let c of catagories._embedded.categories" class="list-group-item">
+     <a (click)="onGetprodutcs(c)">{{c.name}}</a>
+  </li>
+</ul>
