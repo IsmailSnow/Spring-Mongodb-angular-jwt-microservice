@@ -9,12 +9,18 @@ import { ProduitsComponent } from './produits/produits.component';
 import {HttpClientModule} from '@angular/common/http';
 import { CatalogueService } from './services/catalogue.service';
 import { AuthenticationService } from './services/authentication.service';
+import { LoginComponent } from './login/login.component';
+import { footer } from './util/footer';
+import { navbar } from './util/navbar';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriesComponent,
-    ProduitsComponent
+    ProduitsComponent,
+    LoginComponent,
+    footer,
+    navbar
   ],
   imports: [
     BrowserModule,

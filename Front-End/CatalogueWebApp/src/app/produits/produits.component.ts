@@ -18,6 +18,7 @@ export class ProduitsComponent implements OnInit {
         this.getProducts(url);
       }
     })
+    
    }
   ngOnInit() {
   }
