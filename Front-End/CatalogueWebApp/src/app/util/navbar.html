@@ -1,24 +1,29 @@
-<nav class="navbar navbar-expand-md navbar-light bg-lightfixed-top">
-    <a class="navbar-brand" href="#">Catalogue</a>
-    <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
-      <ul class="navbar-nav" ><li>Home</li></ul>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown" ngbDropdown>
-          <a class="nav-link dropdown-toggle" id="id01" href="#" ngbDropdownToggle>Admin</a>
-          <div class="dropdown-menu" aria-labelledby="id01" ngbDropdownMenu>
-            <a class="dropdown-item" href="#">Gestion des Catégories</a>
-            <a class="dropdown-item" href="#">Gestion des produits</a>
-            <a class="dropdown-item" href="#">Gestion des utilisateurs</a>
-          </div>
-        </li>
-      </ul>
-      <ul class="navbar-nav float-right">
-        <li>
-          <a routerLink="/login">Login</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<!-- Nav menu with search -->
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark pmd-navbar pmd-z-depth fixed-top">
+		<button class="navbar-toggler pmd-navbar-toggle" type="button" data-toggle="collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>	
+		<a class="navbar-brand" href="#">Catalogue</a>
+		<div class="collapse navbar-collapse pmd-navbar-sidebar" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+						<a class="nav-link">Home</a>
+				</li>
+				<li class="nav-item dropdown" ngbDropdown>
+						<a class="nav-link dropdown-toggle" id="id01" href="#" ngbDropdownToggle>Admin</a>
+						<div class="dropdown-menu" aria-labelledby="id01" ngbDropdownMenu>
+						  <a class="dropdown-item" href="#">Gestion des Catégories</a>
+						  <a class="dropdown-item" href="#">Gestion des produits</a>
+						  <a class="dropdown-item" href="#">Gestion des utilisateurs</a>
+						</div>
+			   </li>
+			   <li class="nav-item">
+					<a class="nav-link" routerLink="/login">Login</a>
+			</li>
+			</ul>
+		</div>
+		<div class="pmd-navbar-right-icon ml-auto">
+			<a class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect" href="javascript:void(0);"><i class="material-icons md-light pmd-sm">search</i></a>
+		</div>
+		<div class="pmd-sidebar-overlay"></div>
+	</nav>

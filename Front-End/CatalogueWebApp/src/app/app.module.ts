@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProduitsComponent } from './produits/produits.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -12,6 +12,8 @@ import { AuthenticationService } from './services/authentication.service';
 import { LoginComponent } from './login/login.component';
 import { footer } from './util/footer';
 import { navbar } from './util/navbar';
+import { RegisterComponent } from './register/register.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,14 @@ import { navbar } from './util/navbar';
     ProduitsComponent,
     LoginComponent,
     footer,
-    navbar
+    navbar,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule.forRoot(),
-    HttpClientModule
+    MDBBootstrapModule.forRoot(),
+    HttpClientModule,FormsModule
   ],
   providers: [CatalogueService,AuthenticationService],
   bootstrap: [AppComponent]

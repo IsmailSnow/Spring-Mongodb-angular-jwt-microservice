@@ -6,4 +6,7 @@ import {Component} from '@angular/core';
 })
 export class navbar {
   isNavbarCollapsed=true;
+
+// SideNav Button Initialization
+
 }
