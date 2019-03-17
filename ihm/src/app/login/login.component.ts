@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
                     this.authenticationService.createUserSession(tokenValue);
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.alertService.error("Authentication denied");
                     this.loading = false;
                 });
     }

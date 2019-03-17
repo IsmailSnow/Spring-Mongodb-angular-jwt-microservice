@@ -22,37 +22,26 @@ public class UserController {
 
 	@Autowired
 	private AccountService accountService;
-	
+
 	@Autowired
 	private AppUserRepository userRepo;
-	
+
 	@PostMapping("/register")
 	public AppUser register(@RequestBody UserForm userForm) {
 		logger.info("Execute - Controller register");
 		return accountService.saveUser(userForm.getUsername(), userForm.getPassword(), userForm.getConfirmedPassword());
 	}
-	
+
 	@GetMapping("/user")
 	public AppUser getCurrentUser() {
 		logger.info("Execute - Controller register");
 		return userRepo.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 	}
-	
+
 	@GetMapping("/users")
 	public List<AppUser> getUsers() {
 		logger.info("Execute - Controller register");
-		return userRepo.findAll();
+		return accountService.findAll();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

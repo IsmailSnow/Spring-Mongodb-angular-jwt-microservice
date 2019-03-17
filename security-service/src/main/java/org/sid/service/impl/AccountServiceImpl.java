@@ -1,5 +1,8 @@
 package org.sid.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.sid.dao.AppRoleRepository;
@@ -11,11 +14,14 @@ import org.sid.util.AppConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
+@CacheConfig(cacheNames = { "users" })
 public class AccountServiceImpl implements AccountService {
 	private final static Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
 
@@ -27,6 +33,8 @@ public class AccountServiceImpl implements AccountService {
 
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+	List<AppUser> users = new ArrayList<AppUser>();
 
 	@Override
 	public AppUser saveUser(String username, String password, String confirmedPassword) {
@@ -63,9 +71,16 @@ public class AccountServiceImpl implements AccountService {
 		// and persist to the db
 		AppUser appUser = appUserRepository.findByUsername(username);
 		AppRole appRole = appRoleRepository.findByRoleName(rolename);
-		logger.info("info - adding role : "+rolename);
+		logger.info("info - adding role : " + rolename);
 		appUser.getRoles().add(appRole);
 
+	}
+
+	@Override
+	@Cacheable
+	public List<AppUser> findAll() {
+		this.users = appUserRepository.findAll();
+		return this.users;
 	}
 
 }
