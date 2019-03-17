@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AuthenticationService } from '../services/authentication.service';
-import { AlertService } from '../services/alert.service';
+﻿import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+
+import { AlertService, AuthenticationService } from '@/_services';
 
 @Component({templateUrl: 'login.component.html'})
 export class LoginComponent implements OnInit {

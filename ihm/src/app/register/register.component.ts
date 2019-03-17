@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs/operators';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { AlertService } from '../services/alert.service';
-import { UserService } from '../services/user.service';
-import { AuthenticationService } from '../services/authentication.service';
+﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+
+import { AlertService, UserService, AuthenticationService } from '@/_services';
 
 @Component({templateUrl: 'register.component.html'})
 export class RegisterComponent implements OnInit {
@@ -58,4 +57,4 @@ export class RegisterComponent implements OnInit {
                     this.loading = false;
                 });
     }
-  }
+}
