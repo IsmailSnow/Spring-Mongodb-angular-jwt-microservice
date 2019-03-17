@@ -1,24 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthenticationService } from '../services/authentication.service';
-import { UserService } from '../services/user.service';
-import { AlertService } from '../services/alert.service';
 import { first } from 'rxjs/operators';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { AlertService } from '../services/alert.service';
+import { UserService } from '../services/user.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { Router } from '@angular/router';
 
-@Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
-})
+@Component({templateUrl: 'register.component.html'})
 export class RegisterComponent implements OnInit {
-
-  registerForm: FormGroup;
+    registerForm: FormGroup;
     loading = false;
     submitted = false;
 
     constructor(
-        private formBuilder: FormBuilder, 
+        private formBuilder: FormBuilder,
         private router: Router,
         private authenticationService: AuthenticationService,
         private userService: UserService,
@@ -63,5 +58,4 @@ export class RegisterComponent implements OnInit {
                     this.loading = false;
                 });
     }
-
-}
+  }
