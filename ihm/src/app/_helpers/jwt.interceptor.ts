@@ -18,7 +18,15 @@ export class JwtInterceptor implements HttpInterceptor {
                 }
             });
         }
-
+        
+        if(localStorage.getItem("token")){
+            request = request.clone({
+                setHeaders: { 
+                    Authorization: `Bearer `+localStorage.getItem("token")
+                }
+            });
+            localStorage.clear();
+        }
         return next.handle(request);
     }
 }
