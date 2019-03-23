@@ -1,7 +1,7 @@
 ﻿<div class="main">
   <div class="container">
 	<div class="d-flex justify-content-center h-100 topClass" >
-		<div class="card" *ngIf="!isRegister">
+		<div class="card" *ngIf="isSignIn">
 			<div class="card-header">
 				<h3>Sign In</h3>
 				<alert></alert>
@@ -18,9 +18,9 @@
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
 						<input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                        <div *ngIf="f.username.errors.required">Username is required</div>
-                       </div>
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Username is required</div>
+            </div>
 						
 					</div>
 					<div class="input-group form-group">
@@ -28,15 +28,15 @@
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
 						<input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Password is required</div>
-                        </div>
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+              </div>
 					</div>
 					<div class="row align-items-center remember">
 						<input type="checkbox">Remember Me
 					</div>
-                    <div class="form-group">
-                    <button [disabled]="loading" class="btn float-right login_btn">Login</button>
+                <div class="form-group">
+                <button [disabled]="loading" class="btn float-right login_btn">Login</button>
           </div>
 				</form>
 			</div>
@@ -45,7 +45,7 @@
 					Don't have an account?<a (click)="register()" class="register">Sign up</a>
 				</div>
 				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
+					<a (click)="getPassword()" class="register">Forgot your password?</a>
 				</div>
 			</div>
 		</div>
@@ -64,6 +64,20 @@
 				<app-register></app-register>
 			</div>
 		</div>
-	</div>
+		<div class="card" *ngIf="isForgotPassword">
+				<div class="card-header">
+					<h3>Send Password</h3>
+					<span class="social_icon_goback"><i (click)="goBack()" class="fas fa-long-arrow-alt-left"></i></span>
+					<alert></alert>
+					<div class="d-flex justify-content-end social_icon">
+							<span><i class="fab fa-facebook-square"></i></span>
+							<span><i class="fab fa-google-plus-square"></i></span>
+							<span><i class="fab fa-twitter-square"></i></span>
+					</div>
+				</div>
+				<div class="card-body">
+				</div>
+			</div>
+		
   </div>
 </div>

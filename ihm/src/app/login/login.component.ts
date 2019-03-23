@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
     submitted = false;
     returnUrl: string;
     isRegister = false;
+    isForgotPassword  = false;
+    isSignIn = true;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -67,9 +69,18 @@ export class LoginComponent implements OnInit {
 
     register(){
         this.isRegister=true;
+        this.isSignIn=false;
+        this.isForgotPassword=false;
     }
     goBack(){
         this.isRegister=false;
+        this.isForgotPassword=false;
+        this.isSignIn=true;
+    }
+    getPassword(){
+        this.isForgotPassword=true;
+        this.isRegister=false;
+        this.isSignIn=false;
     }
 
 }

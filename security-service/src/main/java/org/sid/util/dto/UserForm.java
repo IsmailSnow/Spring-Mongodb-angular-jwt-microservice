@@ -9,6 +9,7 @@ public class UserForm {
 
 	@NotBlank(message = "email is mandatory")
 	private String username;
+	private String email;
 	@NotBlank(message = "password is mandatory")
     private String password;
     private String confirmedPassword;
