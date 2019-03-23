@@ -1,11 +1,11 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, UserService, AuthenticationService } from '@/_services';
 
-@Component({templateUrl: 'register.component.html'})
+@Component({ selector: 'app-register',templateUrl: 'register.component.html',styleUrls: ['./register.css']})
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
@@ -57,4 +57,5 @@ export class RegisterComponent implements OnInit {
                     this.loading = false;
                 });
     }
+
 }

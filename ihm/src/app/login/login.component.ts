@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
+    isRegister = false;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -63,4 +64,12 @@ export class LoginComponent implements OnInit {
                     this.loading = false;
                 });
     }
+
+    register(){
+        this.isRegister=true;
+    }
+    goBack(){
+        this.isRegister=false;
+    }
+
 }

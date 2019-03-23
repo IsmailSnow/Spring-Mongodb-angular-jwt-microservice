@@ -90,3 +90,16 @@
     .links a{
     margin-left: 4px;
     }
+    .register{
+      color: #007bff !important;
+    }
+    .social_icon_goback{
+      font-size: 30px;
+      margin-left: 10px;
+      color: #FFC312;
+  }
+      
+   .social_icon_goback:hover{
+      color: white;
+      cursor: pointer;
+  }
