@@ -1,5 +1,6 @@
 package org.sid.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -23,7 +24,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor
-public class AppUser {
+public class AppUser implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2670884045684224567L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

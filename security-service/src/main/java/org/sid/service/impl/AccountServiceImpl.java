@@ -24,6 +24,7 @@ import org.springframework.stereotype.Service;
 @CacheConfig(cacheNames = { "users" })
 public class AccountServiceImpl implements AccountService {
 	private final static Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
+	public static final String MY_KEY = "mykey";
 
 	@Autowired
 	private AppUserRepository appUserRepository;
@@ -77,10 +78,19 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	@Cacheable
+	@Cacheable(value="users", key = "#root.target.MY_KEY")
 	public List<AppUser> findAll() {
 		this.users = appUserRepository.findAll();
+		simulateSlowCall();
 		return this.users;
 	}
+	
+	 private void simulateSlowCall() {
+	        try {
+	            Thread.sleep(3000L);
+	        } catch (InterruptedException e) {
+	            e.printStackTrace();
+	        }
+	    }
 
 }
