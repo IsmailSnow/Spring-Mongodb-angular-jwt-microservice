@@ -1,27 +1,14 @@
 ﻿<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-    <div class="navbar-nav">
+<nav class="navbar navbar-expand" *ngIf="currentUser">
+    <div class="navbar-nav ml-auto">
         <a class="nav-item nav-link" routerLink="/">Home</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
 </nav>
 
 <!-- main app container -->
-<div class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 offset-sm-3">
+
+    <div style="min-height:100vh">
                 <alert></alert>
                 <router-outlet></router-outlet>
-            </div>
-        </div>
     </div>
-</div>
-
-<!-- credits -->
-<div class="text-center">
-    <p>
-        <a target="_top">Ismail Salmi</a>
-    </p>
-
-</div>

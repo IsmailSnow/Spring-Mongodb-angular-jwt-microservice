@@ -11,10 +11,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.Email;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -24,6 +28,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor
+@Builder
 public class AppUser implements Serializable {
 
 	/**
@@ -37,18 +42,30 @@ public class AppUser implements Serializable {
 
 	@Column(unique = true)
 	private String username;
+	
 	@Column
+//	@NotBlank(message = "email is mandatory")
+	@Email(message ="valid email is mandatory")
 	private String email;
+	
 	@Column
+//	@NotBlank(message = "lastName is mandatory")
 	private String lastName;
+	
 	@Column
+//	@NotBlank(message = "firstName is mandatory")
 	private String firstName;
+	
 	@Column
+//	@NotBlank(message = "birthday is mandatory")
 	private String birthday;
 	
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
+	
 	private boolean actived;
+	
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Collection<AppRole> roles = new ArrayList<>();
+	
 }
