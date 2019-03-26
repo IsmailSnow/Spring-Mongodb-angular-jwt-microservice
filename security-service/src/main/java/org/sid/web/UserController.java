@@ -2,6 +2,7 @@ package org.sid.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.sid.dao.AppUserRepository;
@@ -13,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,7 +32,10 @@ public class UserController {
 	private AppUserRepository userRepo;
 
 	@PostMapping("/register")
-	public AppUser register(@RequestBody UserForm userForm) {
+	public AppUser register(@RequestBody @Valid UserForm userForm,BindingResult result) {
+		if(result.hasErrors()) {
+			System.out.print(result.getAllErrors());
+		}
 		logger.info("Execute - Controller register");
 		return accountService.saveUser(userForm.getUsername(), userForm.getPassword(), userForm.getConfirmedPassword());
 	}
@@ -53,5 +58,15 @@ public class UserController {
 //        // persisting the user
 //        return ResponseEntity.ok("User is valid");
 //    }
+	
+	@PostMapping("/destroy")
+	public String destroySession(HttpServletRequest request) {
+		try {
+			request.getSession().invalidate();
+		} catch (Exception e) {
+			logger.info("Error Destroying session");
+		}
+		return "Done";
+	}
 
 }
