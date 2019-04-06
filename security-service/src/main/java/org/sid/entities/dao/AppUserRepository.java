@@ -1,4 +1,4 @@
-package org.sid.dao;
+package org.sid.entities.dao;
 
 import org.sid.entities.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;

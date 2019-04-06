@@ -44,20 +44,19 @@ public class AppUser implements Serializable {
 	private String username;
 	
 	@Column
-//	@NotBlank(message = "email is mandatory")
-	@Email(message ="valid email is mandatory")
+    @NotBlank(message = "email is mandatory")
 	private String email;
 	
 	@Column
-//	@NotBlank(message = "lastName is mandatory")
+    @NotBlank(message = "lastName is mandatory")
 	private String lastName;
 	
 	@Column
-//	@NotBlank(message = "firstName is mandatory")
+    @NotBlank(message = "firstName is mandatory")
 	private String firstName;
 	
 	@Column
-//	@NotBlank(message = "birthday is mandatory")
+    @NotBlank(message = "birthday is mandatory")
 	private String birthday;
 	
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

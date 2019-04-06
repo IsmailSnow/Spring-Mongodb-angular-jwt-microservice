@@ -1,8 +1,11 @@
-package org.sid.security;
+package org.sid.conf;
 
 import java.util.Arrays;
 import java.util.List;
 
+import org.sid.security.JWTAuthenticationFilter;
+import org.sid.security.JWTAuthorizationFiler;
+import org.sid.security.UserDetailsServiceImpl;
 import org.sid.util.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -45,20 +48,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests().antMatchers("/appUsers/**","/appRoles/**").hasAuthority(AppConstant.ADMIN);
 		http.authorizeRequests().anyRequest().authenticated();
 		http.addFilter(new JWTAuthenticationFilter(authenticationManager()));
-        http.addFilterBefore(new JWTAuthorizationFiler(), UsernamePasswordAuthenticationFilter.class);
-		
+        http.addFilterBefore(new JWTAuthorizationFiler(), UsernamePasswordAuthenticationFilter.class);	
 		super.configure(http);
 	}
-	
-//	@Bean
-//	public AccessDecisionManager accessDecisionManager() {
-//	    List<AccessDecisionVoter<? extends Object>> decisionVoters 
-//	      = Arrays.asList(
-//	        new WebExpressionVoter(),
-//	        new RoleVoter(),
-//	        new AuthenticatedVoter());
-//	    return new UnanimousBased(decisionVoters);
-//	}
 	
 	
 	

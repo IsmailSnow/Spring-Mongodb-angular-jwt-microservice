@@ -2,19 +2,17 @@ package org.sid.web;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.sid.dao.AppUserRepository;
 import org.sid.entities.AppUser;
+import org.sid.entities.dao.AppUserRepository;
 import org.sid.service.AccountService;
+import org.sid.util.converter.UserConverter;
 import org.sid.util.dto.UserForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,14 +28,14 @@ public class UserController {
 
 	@Autowired
 	private AppUserRepository userRepo;
+	
+	@Autowired
+	private UserConverter userConverter;
 
 	@PostMapping("/register")
-	public AppUser register(@RequestBody @Valid UserForm userForm,BindingResult result) {
-		if(result.hasErrors()) {
-			System.out.print(result.getAllErrors());
-		}
+	public AppUser register(@RequestBody @Valid UserForm userForm) {
 		logger.info("Execute - Controller register");
-		return accountService.saveUser(userForm.getUsername(), userForm.getPassword(), userForm.getConfirmedPassword());
+		return accountService.saveUser(userConverter.AppUserFormToUserConverter(userForm));
 	}
 
 	@GetMapping("/user")
@@ -51,22 +49,6 @@ public class UserController {
 		logger.info("Execute - Controller register");
 		return accountService.findAll();
 	}
-	
 
-//    @PostMapping("/users")
-//    ResponseEntity<String> addUser(@Valid @RequestBody UserForm user) {
-//        // persisting the user
-//        return ResponseEntity.ok("User is valid");
-//    }
-	
-	@PostMapping("/destroy")
-	public String destroySession(HttpServletRequest request) {
-		try {
-			request.getSession().invalidate();
-		} catch (Exception e) {
-			logger.info("Error Destroying session");
-		}
-		return "Done";
-	}
 
 }
